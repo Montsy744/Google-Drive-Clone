@@ -17,6 +17,7 @@
     "cn": "^0.5.2",
     "lucide-react": "^1.71.0",
     "next": "16.4.5",
+    "node-appwrite": "^31.2.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "react-hook-form": "^7.91.0",
