@@ -43,9 +43,8 @@ C'est un projet personnel que je développe pour apprendre Next.js (App Router, 
 - [ ] Dashboard : espace utilisé, fichiers récents, répartition par type
 - [ ] Recherche globale
 - [ ] Tri des fichiers (date, nom, taille)
-- [ ] Interface responsive (mobile et desktop)
+- [x] Interface responsive (mobile et desktop)
 
-> Coche les cases au fur et à mesure de l'avancement du projet.
 
 ## Installation
 
