@@ -13,9 +13,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { use, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { creatAccount } from "@/lib/actions/user.actions";
 
 type FormType = "sign-in" | "sign-up";
 
@@ -32,6 +33,7 @@ const authFormSchema = (formType: FormType) => {
 const AuthForm = ({ type }: { type: FormType }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [accountID, setAccountID] = useState(null);
 
   const formSchema = authFormSchema(type);
 
@@ -44,7 +46,21 @@ const AuthForm = ({ type }: { type: FormType }) => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    setIsLoading(true);
+    setErrorMessage("");
+
+    try {
+      const user = await creatAccount({
+        fullName: values.fullName || "",
+        email: values.email,
+      });
+
+      setAccountID(user.accountID);
+    } catch {
+      setErrorMessage("Failed to create account. Please try again.")
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
